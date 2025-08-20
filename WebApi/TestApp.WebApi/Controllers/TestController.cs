@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TestApp.Application.Dto;
 using TestApp.Application.Features.Commands.CreateTest;
 using TestApp.Application.Features.Queries.GetAllTest;
+using TestApp.Application.Features.Queries.GetTestById;
 using TestApp.Application.Interfaces.Repository;
 
 namespace TestApp.WebApi.Controllers
@@ -22,6 +23,13 @@ namespace TestApp.WebApi.Controllers
 		{
 		   var query = new GetAllTestQuery();
 		   return Ok(await mediator.Send(query));
+		}
+
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetById(Guid id)
+		{
+			var query = new GetTestByIdQuery(id);
+			return Ok(await mediator.Send(query));
 		}
 
 		[HttpPost]
