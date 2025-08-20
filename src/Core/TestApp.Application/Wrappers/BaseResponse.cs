@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestApp.Domain.Common
+namespace TestApp.Application.Wrappers
 {
-	public class BaseEntity
+	public class BaseResponse
 	{
 		public Guid Id { get; set; }
-		public DateTime CreatedAt { get; set; }
-		public string CreatedBy { get; set; }
+		public bool Success { get; set; }
+		public string Message { get; set; }
 	}
 }

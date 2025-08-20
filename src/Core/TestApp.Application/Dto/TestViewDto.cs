@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestApp.Domain.Common
+namespace TestApp.Application.Dto
 {
-	public class BaseEntity
+	public class TestViewDto
 	{
 		public Guid Id { get; set; }
-		public DateTime CreatedAt { get; set; }
-		public string CreatedBy { get; set; }
+		public string Name { get; set; }
 	}
 }
