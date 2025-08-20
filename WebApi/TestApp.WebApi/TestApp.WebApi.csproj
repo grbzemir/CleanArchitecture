@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Core\TestApp.Application\TestApp.Application.csproj" />
+    <ProjectReference Include="..\..\src\Infrastructure\TestApp.Persistence\TestApp.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

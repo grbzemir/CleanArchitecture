@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TestApp.Application.Dto;
+using TestApp.Application.Features.Commands.CreateTest;
 using TestApp.Application.Features.Queries.GetAllTest;
 using TestApp.Application.Interfaces.Repository;
 
@@ -21,6 +22,13 @@ namespace TestApp.WebApi.Controllers
 		{
 		   var query = new GetAllTestQuery();
 		   return Ok(await mediator.Send(query));
+		}
+
+		[HttpPost]
+
+		public async Task<IActionResult> Post(CreateTestCommand command)
+		{
+			return Ok(await mediator.Send(command));
 		}
 	}
 }
