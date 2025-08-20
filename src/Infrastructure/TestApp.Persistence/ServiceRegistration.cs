@@ -8,12 +8,12 @@ namespace TestApp.Application
 {
 	public static class ServiceRegistration
 	{
-		public static void AddPersistenceServices(this IServiceCollection serviceCollection)
+		public static void AddApplicationRegistration(this IServiceCollection services)
 		{
-			serviceCollection.AddDbContext<ApplicationDbContext>(opt =>
+			services.AddDbContext<ApplicationDbContext>(opt =>
 				opt.UseInMemoryDatabase("memoryDb"));
 
-			serviceCollection.AddTransient<ITestRepository, TestRepository>();
+			services.AddTransient<ITestRepository, TestRepository>();
 		}
 	}
 }

@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TestApp.Application.Dto;
+using TestApp.Application.Features.Queries.GetAllTest;
 using TestApp.Application.Interfaces.Repository;
 
 namespace TestApp.WebApi.Controllers
@@ -9,22 +11,16 @@ namespace TestApp.WebApi.Controllers
 	[ApiController]
 	public class TestController : ControllerBase
 	{
-       private readonly ITestRepository testRepository;
-        public TestController(ITestRepository testRepository)
+       private readonly IMediator mediator;
+        public TestController(IMediator mediator)
         {
-            this.testRepository = testRepository;
+           this.mediator = mediator;
         }
 		[HttpGet]
 		public async Task<IActionResult> Get()
 		{
-			var allList = await testRepository.GetAllAsync();
-			var result = allList.Select(i => new TestViewDto()
-			{
-				Id = i.Id,
-				Name = i.Name,
-			}).ToList();
-
-			return Ok(result);
+		   var query = new GetAllTestQuery();
+		   return Ok(await mediator.Send(query));
 		}
 	}
 }
